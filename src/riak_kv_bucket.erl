@@ -25,7 +25,9 @@
 
 -export([validate/1]).
 
+-ifdef(TEST).
 -include_lib("eunit/include/eunit.hrl").
+-endif.
 
 -type prop() :: {PropName::atom(), PropValue::any()}.
 -type error() :: {PropName::atom(), ErrorReason::atom()}.

@@ -23,9 +23,9 @@
 %% @doc coordination of Riak PUT requests
 
 -module(riak_kv_put_fsm).
-%-ifdef(TEST).
+-ifdef(TEST).
 -include_lib("eunit/include/eunit.hrl").
-%-endif.
+-endif.
 -include_lib("riak_kv_vnode.hrl").
 -include_lib("riak_kv_js_pools.hrl").
 -include("riak_kv_wm_raw.hrl").
