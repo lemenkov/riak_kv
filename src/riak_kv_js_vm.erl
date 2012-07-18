@@ -372,7 +372,7 @@ maybe_idle(#state{in_batch=true}) ->
 build_arg_list([], Accum) ->
     lists:reverse(Accum);
 build_arg_list([H|[]], Accum) ->
-    build_arg_list([], [js_mochijson2:encode(H)|Accum]);
+    build_arg_list([], [mochijson2:encode(H)|Accum]);
 build_arg_list([H|T], Accum) ->
-    build_arg_list(T, [[js_mochijson2:encode(H), ","]|Accum]).
+    build_arg_list(T, [[mochijson2:encode(H), ","]|Accum]).
 
