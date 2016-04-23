@@ -274,7 +274,7 @@ delete_test_() ->
 invalid_rw_delete() ->
     RW = <<"abc">>,
     %% Start the gen_fsm process
-    RequestId = erlang:phash2(erlang:now()),
+    RequestId = erlang:phash2(os:timestamp()),
     Bucket = <<"testbucket">>,
     Key = <<"testkey">>,
     Timeout = 60000,
@@ -291,7 +291,7 @@ invalid_rw_delete() ->
 invalid_r_delete() ->
     R = <<"abc">>,
     %% Start the gen_fsm process
-    RequestId = erlang:phash2(erlang:now()),
+    RequestId = erlang:phash2(os:timestamp()),
     Bucket = <<"testbucket">>,
     Key = <<"testkey">>,
     Timeout = 60000,
@@ -308,7 +308,7 @@ invalid_r_delete() ->
 invalid_w_delete() ->
     W = <<"abc">>,
     %% Start the gen_fsm process
-    RequestId = erlang:phash2(erlang:now()),
+    RequestId = erlang:phash2(os:timestamp()),
     Bucket = <<"testbucket">>,
     Key = <<"testkey">>,
     Timeout = 60000,
@@ -326,7 +326,7 @@ invalid_w_delete() ->
 invalid_pr_delete() ->
     PR = <<"abc">>,
     %% Start the gen_fsm process
-    RequestId = erlang:phash2(erlang:now()),
+    RequestId = erlang:phash2(os:timestamp()),
     Bucket = <<"testbucket">>,
     Key = <<"testkey">>,
     Timeout = 60000,
@@ -343,7 +343,7 @@ invalid_pr_delete() ->
 invalid_pw_delete() ->
     PW = <<"abc">>,
     %% Start the gen_fsm process
-    RequestId = erlang:phash2(erlang:now()),
+    RequestId = erlang:phash2(os:timestamp()),
     Bucket = <<"testbucket">>,
     Key = <<"testkey">>,
     Timeout = 60000,

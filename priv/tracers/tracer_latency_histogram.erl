@@ -105,7 +105,7 @@ trace({trace_ts, Pid, return_from, {_, _, _}, _Res, TS}, {Dict, LatencyMS}) ->
     DKey = Pid,
     Start = case dict:find(DKey, Dict) of
                 {ok, StTime} -> StTime;
-                error        -> now()
+                error        -> os:timestamp()
             end,
     Elapsed = timer:now_diff(TS, Start) div 1000,
     folsom_metrics_histogram:update(foo, Elapsed),

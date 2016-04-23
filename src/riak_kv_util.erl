@@ -442,7 +442,7 @@ non_ttl_bucket_test() ->
 
 make_vtag_test() ->
     crypto:start(),
-    ?assertNot(make_vtag(now()) =:=
-               make_vtag(now())).
+    ?assertNot(make_vtag(os:timestamp()) =:=
+               make_vtag(os:timestamp())).
 
 -endif.

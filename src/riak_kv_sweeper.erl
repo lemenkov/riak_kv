@@ -204,7 +204,7 @@ timestamp() ->
 %% ====================================================================
 init([]) ->
     process_flag(trap_exit, true),
-    random:seed(erlang:now()),
+    random:seed(os:timestamp()),
     schedule_initial_sweep_tick(),
     State = riak_kv_sweeper_state:new(),
     {ok, State}.
