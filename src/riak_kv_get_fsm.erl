@@ -698,7 +698,7 @@ happy_path_case() ->
 
     %% Start the FSM to issue a get and  check notfound
 
-    ReqId1 = 112381838, % erlang:phash2(erlang:now()).
+    ReqId1 = 112381838, % erlang:phash2(os:timestamp()).
     R = 2,
     Timeout = 1000,
     {ok, _FsmPid1} = test_link(ReqId1, Bucket, Key, R, Timeout, self(),
@@ -737,7 +737,7 @@ happy_path_case() ->
 
 
 n_val_violation_case() ->
-    ReqId1 = 13210434, % erlang:phash2(erlang:now()).
+    ReqId1 = 13210434, % erlang:phash2(os:timestamp()).
     Bucket = <<"mybucket">>,
     Key = <<"badnvalkey">>,
     Nval = 3,

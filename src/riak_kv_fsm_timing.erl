@@ -33,7 +33,7 @@
 -type duration() :: {StageName::atom(), StageDuration::non_neg_integer()}.
 -type durations() :: {ResponseUSecs::non_neg_integer(), [duration()]}.
 
-%% @doc add timing information of `{State, erlang:now()}' to the Timings
+%% @doc add timing information of `{State, os:timestamp()}' to the Timings
 
 -spec add_timing(atom(), timings()) -> timings().
 add_timing(State, Timings) when is_list(Timings) ->

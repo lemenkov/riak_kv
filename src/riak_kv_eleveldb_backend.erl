@@ -103,7 +103,7 @@ capabilities(_, _) ->
 -spec start(integer(), config()) -> {ok, state()} | {error, term()}.
 start(Partition, Config) ->
     %% Initialize random seed
-    random:seed(now()),
+    random:seed(os:timestamp()),
 
     %% Get the data root directory
     DataDir = filename:join(app_helper:get_prop_or_env(data_root, Config, eleveldb),

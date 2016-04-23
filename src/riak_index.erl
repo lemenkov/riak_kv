@@ -235,7 +235,7 @@ format_failure_reason(FailureReason) ->
 
 %% @spec timestamp() -> integer()
 %% @doc Get a timestamp, the number of milliseconds returned by
-%%      erlang:now().
+%%      os:timestamp().
 timestamp() ->
     {MegaSeconds,Seconds,MilliSeconds}=os:timestamp(),
     (MegaSeconds * 1000000000000) + (Seconds * 1000000) + MilliSeconds.

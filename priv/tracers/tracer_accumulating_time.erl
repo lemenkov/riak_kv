@@ -46,7 +46,7 @@ trace({trace_ts, Pid, return_from, {Mod, Func, Arity}, _Res, TS}, {Dict}) ->
     DKey = {Pid, MFA},
     Start = case dict:find(DKey, Dict) of
                 {ok, StTime} -> StTime;
-                error        -> now()
+                error        -> os:timestamp()
             end,
     Elapsed = timer:now_diff(TS, Start),
     SumKey = {sum, MFA},

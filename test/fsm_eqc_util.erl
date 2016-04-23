@@ -149,7 +149,7 @@ build_riak_obj(B,K,Vc,Val,notombstone) ->
         riak_object:set_vclock(
             riak_object:new(B,K,Val),
                 Vc),
-        [{dict:from_list([{<<"X-Riak-Last-Modified">>,now()}]), Val}]);
+        [{dict:from_list([{<<"X-Riak-Last-Modified">>,os:timestamp()}]), Val}]);
 build_riak_obj(B,K,Vc,Val,tombstone) ->
     Obj = build_riak_obj(B,K,Vc,Val,notombstone),
     add_tombstone(Obj).
