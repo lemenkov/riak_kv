@@ -270,7 +270,7 @@ dep_apps(Test, Extra) ->
                 application:set_env(riak_core, schema_dirs, Dirs),
                 application:set_env(lager, handlers, [{lager_file_backend,
                                                        [
-                                                        {Test ++ "/log/debug.log", debug, 10485760, "$D0", 5}]}]),
+                                                        {file, Test ++ "/log/debug.log"}, debug, 10485760, "$D0", 5]}]),
                 application:set_env(lager, crash_log, Test ++ "/log/crash.log");
            (stop) -> ok;
            (_) -> ok
