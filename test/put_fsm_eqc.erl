@@ -115,7 +115,7 @@ setup() ->
     application:stop(lager),
     application:load(lager),
     application:set_env(lager, handlers,
-                        [{lager_file_backend, [{?LAGER_LOGFILE, info, 10485760,"$D0",5}]}]),
+                        [{lager_file_backend, [{file, ?LAGER_LOGFILE}, info, 10485760,"$D0",5]}]),
     ok = lager:start(),
 
     %% Start up mock servers and dependencies
