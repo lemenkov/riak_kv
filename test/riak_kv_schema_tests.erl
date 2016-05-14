@@ -336,10 +336,10 @@ correct_error_handling_by_multibackend_test() ->
     Config = cuttlefish_unit:generate_templated_config([
         "../priv/riak_kv.schema",
         "../priv/multi_backend.schema",
-        "../deps/bitcask/priv/bitcask.schema",
-        "../deps/bitcask/priv/bitcask_multi.schema",
-        "../deps/eleveldb/priv/eleveldb.schema",
-        "../deps/eleveldb/priv/eleveldb_multi.schema",
+        code:priv_dir(bitcask) ++ "/bitcask.schema",
+        code:priv_dir(bitcask) ++ "/bitcask_multi.schema",
+        code:priv_dir(eleveldb) ++ "/eleveldb.schema",
+        code:priv_dir(eleveldb) ++ "/eleveldb_multi.schema",
         "../test/bad_bitcask_multi.schema"
         ],
         Conf, context(), predefined_schema()),
@@ -374,10 +374,10 @@ all_backend_multi_test() ->
     Config = cuttlefish_unit:generate_templated_config([
         "../priv/riak_kv.schema",
         "../priv/multi_backend.schema",
-        "../deps/bitcask/priv/bitcask.schema",
-        "../deps/bitcask/priv/bitcask_multi.schema",
-        "../deps/eleveldb/priv/eleveldb.schema",
-        "../deps/eleveldb/priv/eleveldb_multi.schema"
+        code:priv_dir(bitcask) ++ "/bitcask.schema",
+        code:priv_dir(bitcask) ++ "/bitcask_multi.schema",
+        code:priv_dir(eleveldb) ++ "/eleveldb.schema",
+        code:priv_dir(eleveldb) ++ "/eleveldb_multi.schema"
         ],
         Conf, context(), predefined_schema()),
 
