@@ -261,5 +261,5 @@ reserve_batch_vm(Name, MaxCount, Count) ->
 
 back_off(MaxCount, Count) ->
     ScalingFactor = (1 + (MaxCount - Count)) *
-        (0.1 + random:uniform(100) * 0.001),
+        (0.1 + rand:uniform(100) * 0.001),
     timer:sleep(erlang:round(500 * ScalingFactor)).

@@ -1281,7 +1281,7 @@ add_hours(Hour, Inc)  ->
     (Hour + Inc) rem 24.
 
 pick(List) when length(List) > 0 ->
-    N = random:uniform(length(List)),
+    N = rand:uniform(length(List)),
     lists:nth(N, List).
 
 sweep_all_indices(Indices) ->

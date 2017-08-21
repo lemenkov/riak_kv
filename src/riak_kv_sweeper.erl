@@ -204,7 +204,7 @@ timestamp() ->
 %% ====================================================================
 init([]) ->
     process_flag(trap_exit, true),
-    random:seed(os:timestamp()),
+    rand:seed(exs1024, os:timestamp()),
     schedule_initial_sweep_tick(),
     State = riak_kv_sweeper_state:new(),
     {ok, State}.
@@ -377,7 +377,7 @@ hashtree_estimate_keys(Index) ->
 
 -spec schedule_initial_sweep_tick() -> _.
 schedule_initial_sweep_tick() ->
-    InitialTick = trunc(get_tick() * random:uniform()),
+    InitialTick = trunc(get_tick() * rand:uniform()),
     chronos:start_timer(?CHRONOS, sweep_tick, InitialTick, {?MODULE, sweep_tick, []}).
 
 -spec schedule_sweep_tick() -> _.

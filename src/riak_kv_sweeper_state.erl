@@ -609,7 +609,7 @@ elapsed_secs(Now, Start) ->
 
 -spec random_sweep([#sweep{}]) -> #sweep{}.
 random_sweep(Sweeps) ->
-    Index = random:uniform(length(Sweeps)),
+    Index = rand:uniform(length(Sweeps)),
     lists:nth(Index, Sweeps).
 
 -spec scheduler_enabled() -> boolean().

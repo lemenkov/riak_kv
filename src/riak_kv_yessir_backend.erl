@@ -376,7 +376,7 @@ get_folder(FoldFun, Acc, KeyCount) ->
     end.
 
 key_of_integer(Range, State) ->
-    {N, S} = random:uniform_s(Range, State),
+    {N, S} = rand:uniform_s(Range, rand:seed(State)),
     Key = integer_to_list(N) ++ ".1000", %% e.g. "10.1000"
     BKey = list_to_binary(Key),          %% e.g. <<"10.1000">>
     {BKey, S}.
@@ -386,15 +386,15 @@ value_for_random(VR, Size) ->
 
 fold_anything_fun(FoldFunc, Acc, KeyCount) ->
     Range = 1000000,
-    KeyState = random:seed0(),
-    ValueState = random:seed0(),
+    KeyState = rand:export_seed(),
+    ValueState = rand:export_seed(),
     all_keys_folder(FoldFunc, Acc, Range, {KeyState, ValueState}, KeyCount).
 
 all_keys_folder(FoldFunc, Acc, _Range, _S, 0) ->
     FoldFunc(undefined, 0, Acc);
 all_keys_folder(FoldFunc, Acc, Range, {KS,VS}, N) ->
     {Key,KSS} = key_of_integer(Range, KS),
-    {VR,VSS} = random:uniform_s(255,VS),
+    {VR,VSS} = rand:uniform_s(255,rand:seed(VS)),
     Acc1 = FoldFunc(Key, VR, Acc),
     all_keys_folder(FoldFunc, Acc1, Range, {KSS,VSS}, N-1).
 
