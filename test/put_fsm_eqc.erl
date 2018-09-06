@@ -928,11 +928,8 @@ check_puts_sent(ExpectedPuts, VPutResp) ->
 %%====================================================================
 
 start_javascript() ->
-    application:stop(erlang_js),
     application:stop(sasl),
     application:start(sasl),
-    application:load(erlang_js),
-    application:start(erlang_js),
     %% Set up the test dir so erlang_js will find put_fsm_precommit.js
     TestDir = filename:join([filename:dirname(code:which(?MODULE)), "..", "test"]),
     application:set_env(riak_kv, js_source_dir, TestDir),
@@ -941,7 +938,6 @@ start_javascript() ->
     ok.
 
 cleanup_javascript() ->
-    application:stop(erlang_js),
     application:stop(sasl).
 
 -endif. % EQC
