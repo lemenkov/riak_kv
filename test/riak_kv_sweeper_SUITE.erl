@@ -34,14 +34,15 @@ suite() ->
     [{timetrap, {seconds, 10}}].
 
 init_per_suite(Config) ->
-    {ok, Apps} = application:ensure_all_started(exometer_core),
-    %% Exometer starts lager. Set lager_console_backend to none to
-    %% avoid spamming the console with logs during testing
+    {ok, ExometerApps} = application:ensure_all_started(exometer_core),
+    {ok, LagerApps} = application:ensure_all_started(lager),
+    %% Set lager_console_backend to none to avoid spamming the console with
+    %% logs during testing
     lager:set_loglevel(lager_console_backend, none),
 
     {ok, _Pid} = sweeper_meck_helper:start(),
 
-    [{exometer_apps, Apps}|Config].
+    [{exometer_apps, ExometerApps ++ LagerApps}|Config].
 
 end_per_suite(Config) ->
     sweeper_meck_helper:stop(),
