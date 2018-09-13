@@ -265,7 +265,7 @@ dep_apps(Test, Extra) ->
                 application:set_env(riak_core, ring_state_dir, Test ++ "/ring"),
                 application:set_env(riak_core, platform_data_dir, Test ++ "/data"),
                 application:set_env(riak_core, handoff_port, 0), %% pick a random handoff port
-                application:set_env(riak_core, schema_dirs, [code:lib_dir() ++ "/*/priv"]),
+                application:set_env(riak_core, schema_dirs, [code:lib_dir() ++ "/*/priv/", "/usr/share/erlang/lib" ++ "/*/priv/"]),
                 application:set_env(lager, handlers, [{lager_file_backend,
                                                        [
                                                         {file, Test ++ "/log/debug.log"}, debug, 10485760, "$D0", 5]}]),
